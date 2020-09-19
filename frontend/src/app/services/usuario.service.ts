@@ -45,8 +45,8 @@ export class UsuarioService {
 
   // dar baja
   darDeBaja(user:Usuario): Observable<Usuario> {
-    const url = `http://3.227.118.254:3000/baja_cuenta/${user.id}`;
-    return this.http.delete<Usuario>(url, httpOptions).pipe(
+    const url = `http://3.227.118.254:3000/baja_cuenta/`;
+    return this.http.post<Usuario>(url, user,httpOptions).pipe(
       tap(_ => console.log(`deleted usuario id=${user.id}`)),
       catchError(this.handleError<Usuario>(`darDeBaja id=${user.id}`))
     );
