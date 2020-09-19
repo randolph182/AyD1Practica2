@@ -21,8 +21,9 @@ export class RegistroUsuarioComponent implements OnInit {
       {
         nombre: ['',Validators.required],
         apellido: ['',Validators.required],
-        dpi: ['', Validators.required],
-        idEmpleado: ['', Validators.required],
+        id: ['', Validators.required],
+        usuario: ['', Validators.required],
+        password:['', Validators.required],
         rol: ['',Validators.required]
         
       }
@@ -51,13 +52,14 @@ export class RegistroUsuarioComponent implements OnInit {
     let usuario:Usuario = new Usuario();
     usuario.apellido = this.usuarioForm.controls['apellido'].value;
     usuario.nombre = this.usuarioForm.controls['nombre'].value;
-    usuario.dpi = this.usuarioForm.controls['dpi'].value;
-    usuario.idEmpleado = this.usuarioForm.controls['idEmpleado'].value;
+    usuario.usuario = this.usuarioForm.controls['usuario'].value;
+    usuario.password = this.usuarioForm.controls['password'].value;
+    usuario.id = this.usuarioForm.controls['id'].value;
     usuario.rol = this.usuarioForm.controls['rol'].value;
     console.log(usuario);
     
-/*
-    this.usuarioService.addUsuario(user).
+
+    this.usuarioService.addUsuario(usuario).
       subscribe(
         usuario => {
           alert('Usuario ingresado con exito');
@@ -66,7 +68,7 @@ export class RegistroUsuarioComponent implements OnInit {
 
         }
       );
-*/
+
     
   }
 

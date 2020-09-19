@@ -1,8 +1,9 @@
 export class Usuario {
-    idEmpleado:number;
+    id:number;
     nombre:string;
     apellido:string;
     rol:number;
-    dpi:number;
-    
+    usuario:string;
+    password:string;
+
 }

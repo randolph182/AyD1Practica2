@@ -35,9 +35,9 @@
                     <th scope="row">1</th>
                     <td>prueba</td>
                     <td>pruebaApellido</td>
-                    <td>  <button><fa-icon [icon] = "faEdit">
-                          </fa-icon></button> 
-                          <button><fa-icon [icon] = "faTrashAlt">
+                    <td>  <a routerLink="/mod-usuario/1/prueba/pruebaApellido/reba/26653754Zu/2"><fa-icon [icon] = "faEdit">
+                            </fa-icon></a >  
+                          <button ><fa-icon [icon] = "faTrashAlt">
                           </fa-icon></button > 
                     </td>
                   </tr>  
@@ -45,9 +45,9 @@
                   <th scope="row">{{indice + 1}}</th>
                   <td>{{user.nombre}}</td>
                   <td>{{user.apellido}}</td>
-                  <td>  <a routerLink="#"><fa-icon [icon] = "faEdit">
+                  <td>  <a routerLink="/mod-usuario/{{user.id}}/{{user.nombre}}/{{user.apellido}}/{{user.usuario}}/{{user.password}}/{{user.rol}}"><fa-icon [icon] = "faEdit">
                         </fa-icon></a > 
-                        <button><fa-icon [icon] = "faTrashAlt">
+                        <button (click) = "eliminar(user)"><fa-icon [icon] = "faTrashAlt">
                         </fa-icon></button > 
                   </td>
                 </tr--->
