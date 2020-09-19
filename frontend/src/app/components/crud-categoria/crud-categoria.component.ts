@@ -8,6 +8,8 @@ import {Categoria} from '../../models/Categoria'
 export class CrudCategoriaComponent implements OnInit {
   categorias:any=[];
   index:number;
+  nombre:string;
+  descripcion:string;
   categoria:Categoria;
   constructor() { }
 
