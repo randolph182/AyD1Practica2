@@ -1,0 +1,75 @@
+<div class="container">
+    <section class="page-section portfolio" id="portfolio">
+        <div class="container">
+    
+          <!-- Portfolio Section Heading -->
+          <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Usuarios</h2>
+    
+          <!-- Icon Divider -->
+          <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon">
+            
+                <a><fa-icon [icon] = "faStar" >
+          
+                </fa-icon></a>
+              <!--i class="fas fa-star"></i-->
+            </div>
+            <div class="divider-custom-line"></div>
+          </div>
+    
+          <!-- Portfolio Grid Items -->
+          
+          <table class="table">
+              <thead class="thead-dark">
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Nombre</th>
+                  <th scope="col">Apellidos</th>
+                  <th scope="col"></th>
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <tr >
+                    <th scope="row">1</th>
+                    <td>prueba</td>
+                    <td>pruebaApellido</td>
+                    <td>  <button><fa-icon [icon] = "faEdit">
+                          </fa-icon></button> 
+                          <button><fa-icon [icon] = "faTrashAlt">
+                          </fa-icon></button > 
+                    </td>
+                  </tr>  
+                <!--tr *ngFor="let user of usuarios; let indice = index">
+                  <th scope="row">{{indice + 1}}</th>
+                  <td>{{user.nombre}}</td>
+                  <td>{{user.apellido}}</td>
+                  <td>  <a routerLink="#"><fa-icon [icon] = "faEdit">
+                        </fa-icon></a > 
+                        <button><fa-icon [icon] = "faTrashAlt">
+                        </fa-icon></button > 
+                  </td>
+                </tr--->
+              </tbody>
+            </table>
+           <br>
+           <!--div *ngIf="selectTipo==1"class="input-group">
+               <div class="input-group-prepend">
+                 <span class="input-group-text">Contenido</span>
+               </div>
+               <textarea class="form-control"
+               [(ngModel)]="contenido" rows="10" aria-label="With textarea"></textarea>
+           </div--->
+
+
+  
+          <!--button type="submit" class="btn btn-primary btn-xl float-right" id="btnCrear" (click)="">Crear</button--->
+            
+          <!-- /.row -->
+    
+        </div>
+      </section>
+    
+</div>
+
