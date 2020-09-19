@@ -11,6 +11,28 @@ function createRouter(db) {
 *****************************************************************
 */
 
+//******Obtener productos******
+router.get('/productos', (req, res, next) => {
+  db.query(
+    'SELECT * FROM PRODUCTO',
+    [],
+    (error,results) => {
+      if(error)
+      {
+        console.error(error);
+        res.status(500).json({status:'error'});
+      }
+      else
+      {
+        res.status(200).json(results);
+      }
+    }
+  );
+});
+
+
+
+
 //******Acutalizar producto******
 router.put('/actualizar_producto', (req, res, next) => {
     db.query(
