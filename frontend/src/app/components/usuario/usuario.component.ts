@@ -21,6 +21,7 @@ export class UsuarioComponent implements OnInit {
   constructor(private usuarioService:UsuarioService) { }
 
   ngOnInit(): void {
+    this.getUsuarios();
   }
 
   getUsuarios():void{

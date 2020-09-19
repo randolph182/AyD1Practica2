@@ -31,7 +31,7 @@
                 </tr>
               </thead>
               <tbody>
-                <tr >
+                <!--tr >
                     <th scope="row">1</th>
                     <td>prueba</td>
                     <td>pruebaApellido</td>
@@ -40,8 +40,8 @@
                           <button ><fa-icon [icon] = "faTrashAlt">
                           </fa-icon></button > 
                     </td>
-                  </tr>  
-                <!--tr *ngFor="let user of usuarios; let indice = index">
+                  </tr-->  
+                <tr *ngFor="let user of usuarios; let indice = index">
                   <th scope="row">{{indice + 1}}</th>
                   <td>{{user.nombre}}</td>
                   <td>{{user.apellido}}</td>
@@ -50,7 +50,7 @@
                         <button (click) = "eliminar(user)"><fa-icon [icon] = "faTrashAlt">
                         </fa-icon></button > 
                   </td>
-                </tr--->
+                </tr>
               </tbody>
             </table>
            <br>
