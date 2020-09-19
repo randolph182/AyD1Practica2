@@ -9,20 +9,22 @@ import { EncabezadoComponent } from './components/encabezado/encabezado.componen
 import { HomeComponent } from './components/home/home.component';
 import { CrudCategoriaComponent } from './components/crud-categoria/crud-categoria.component';
 import { CommonModule } from '@angular/common';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
     AppComponent,
     EncabezadoComponent,
     HomeComponent,
-    CrudCategoriaComponent
+    CrudCategoriaComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

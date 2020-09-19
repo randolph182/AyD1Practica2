@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Categoria} from '../../models/Categoria'
+import {Categoria} from '../../models/Categoria';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CategoriaService} from '../../services/categoria.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-crud-categoria',
   templateUrl: './crud-categoria.component.html',
@@ -8,10 +12,26 @@ import {Categoria} from '../../models/Categoria'
 export class CrudCategoriaComponent implements OnInit {
   categorias:any=[];
   index:number;
-  nombre:string;
-  descripcion:string;
+  //categoriaForm:FormGroup;
+
   categoria:Categoria;
-  constructor() { }
+  constructor(private router:Router,
+    private categoriaService:CategoriaService) { }
+
+  addCategoria():void{
+
+    //let categoria:Categoria = new Categoria();
+    //this.categoria.nombre = this.categoriaForm.controls['categoria-input'].value;
+
+    this.categoriaService.addCategoria(this.categoria).
+    subscribe(
+      categoria => {
+        alert('Categoria ingresada con exito');
+        console.log(categoria);
+      }
+    );
+
+  }
 
   ngOnInit(): void {
 
