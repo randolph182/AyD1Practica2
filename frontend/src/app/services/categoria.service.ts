@@ -20,9 +20,7 @@ const httpOptions = {
 export class CategoriaService {
  // API_URI = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
-  update(){
-
-  }
+  
   addCategoria(categoria: Categoria) : Observable<Categoria>{
     let url = 'http://3.85.52.106:3000/registrar_usuario';
     return this.http.post<Categoria>(url, categoria, httpOptions)
@@ -32,7 +30,7 @@ export class CategoriaService {
     );
   }
 
-  darDeBaja(categoria:Categoria): Observable<Categoria> {
+  deleteCategoria(categoria:Categoria): Observable<Categoria> {
     const url = `http://3.227.118.254:3000/eliminar_usuario`;
     return this.http.post<Categoria>(url, categoria,httpOptions).pipe(
       tap(_ => console.log(`deleted usuario id=${categoria.id}`)),
@@ -40,11 +38,16 @@ export class CategoriaService {
     );
   }
 
-  read(){
-
+  getUsuarios (): Observable<Categoria[]> {
+    let urlUsuarios = `http://localhost:3000/obtener_usuario`;
+    return this.http.get<Categoria[]>(urlUsuarios, httpOptions)
+    .pipe(
+      tap(_ => console.log('fetched categoria')),
+      catchError(this.handleError<Categoria[]>('getcategorias', []))
+    );
   }
 
-  updateUsuario(categoria:Categoria): Observable<any> {
+  updateCategoria(categoria:Categoria): Observable<any> {
     let url = 'http://localhost:3000/actualizar_usuario';
     return this.http.put(url, categoria, httpOptions).pipe(
       tap(_ => console.log(`categoria actualizada id=${categoria.id}`)),
