@@ -19,6 +19,7 @@ import { CrudProductoComponent } from './components/crud-producto/crud-producto.
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { ModUsuarioComponent } from './components/mod-usuario/mod-usuario.component';
+import { HttpClientModule } from '@angular/common/http';
 library.add(fas);
 @NgModule({
   declarations: [
