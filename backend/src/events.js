@@ -1,5 +1,4 @@
 const express = require('express');
-
 function createRouter(db) {
   const router = express.Router();
   const owner = '';
@@ -304,6 +303,12 @@ router.post('/nuevo_producto', (req, res, next) => {
     );
   });
 
+
+  router.get('/mock_producto', (req,res,next)=>{
+    const prod = require('../test/productos');
+    console.log(prod);
+    res.status(200).jsonp(prod());
+  });
   return router;
 }
 

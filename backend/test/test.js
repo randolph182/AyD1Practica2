@@ -6,6 +6,7 @@ const producto = require("../src/events") //mando a trare funcionalidades que me
 const url = 'http://localhost:3000';
 const nock = require('nock');
 const response = require('./usuarios');
+const products = require('./productos');
 let http = require('http');
 const { parse } = require('path');
 const { CLIENT_RENEG_WINDOW } = require('tls');
@@ -184,7 +185,7 @@ describe('Prueba para consultar productos en la API',()=>{
    });
 });
 
-describe.only('Prueba Actualizar categorias en la  API',()=>{
+describe('Prueba Actualizar categorias en la  API',()=>{
    it('prueba para insertar una nueva categoria', (done) => {
       let res = chai
          .request(url)
@@ -229,8 +230,18 @@ describe.only('Prueba Actualizar categorias en la  API',()=>{
       
    });
 
-   
 });
 
-
+describe('Mockeado productos de la base de datos en la API',()=>{
+   it('Debe poder generar datos de productos', (done) => {
+      let res = chai
+         .request(url)
+         .get('/mock_producto')
+         .end(function (err, res) {
+            console.log(res.body)
+            expect(res).to.have.status(200);
+            done();
+         });
+   });
+});
 
