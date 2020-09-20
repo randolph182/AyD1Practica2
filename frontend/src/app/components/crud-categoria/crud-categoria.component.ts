@@ -1,5 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {Categoria} from '../../models/Categoria'
+import {Categoria} from '../../models/Categoria';
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
+import { CategoriaService} from '../../services/categoria.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'app-crud-categoria',
   templateUrl: './crud-categoria.component.html',
@@ -8,19 +12,68 @@ import {Categoria} from '../../models/Categoria'
 export class CrudCategoriaComponent implements OnInit {
   categorias:any=[];
   index:number;
+  //categoriaForm:FormGroup;
+
   categoria:Categoria;
-  constructor() { }
+ 
+
+  constructor(private router:Router,
+    private categoriaService:CategoriaService) {
+    }
+
+  addCategoria():void{
+
+    this.categoriaService.addCategoria(this.categoria).
+    subscribe(
+      categoria => {
+        alert('Categoria ingresada con exito');
+        console.log(categoria);
+      }
+    );
+
+  }
+
+  getCategoria():void{
+    this.categoriaService.getCategorias().
+    subscribe(categoria =>{
+      this.categorias = categoria as Categoria[];
+      console.log("--------categoria local------------\n");
+      console.log(categoria);
+      console.log("--------categoria global------------\n");
+      console.log(this.categoria);
+    }, 
+    error => console.error(error));
+  }
+
+  eliminarCategoria(categoria:Categoria):void{
+    this.categoriaService.deleteCategoria(categoria).subscribe( categoria => { alert('categoria eliminada!');});
+  }
+
+  actualizarCategoria(categoria:Categoria):void{
+    this.categoriaService.updateCategoria(categoria).subscribe( categoria => { alert('categoria actualizada!');});
+  }
 
   ngOnInit(): void {
+      this.getCategoria();
+  }
 
-  }
-  onDelete(indice){
-    
-  }
-  onSave(){
+  onSave()
+  {}
 
+  onEdit(indice)
+  {
+    let cat:Categoria = new Categoria();
+    cat.id = indice;
+    cat.nombre = this.categoria.nombre;
+    cat.descripcion = this.categoria.descripcion;
+    this.actualizarCategoria(cat);
   }
-  onEdit(indice){
 
+  onDelete(indice)
+  {
+    let cat:Categoria = new Categoria();
+    cat.id = indice;
+    this.eliminarCategoria(cat);
   }
+  
 }
