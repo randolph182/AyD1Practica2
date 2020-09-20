@@ -13,6 +13,23 @@ describe('Prueba para el CRUD de Usuario:', () => {
         expect(res.status).to.equal(200);
     });
 
+    it('Actualizar un usuario', async () => {
+        let res = await chai
+        .request(url)
+        .post('/registrar_usuario')
+        .send({nombre:"oscar", apellido:"rodriguez", rol:1, usuario:"oscar", pass:"1234"});
+        
+        let ultimo = await chai
+        .request(url)
+        .get('/ultimo_usuario');
+
+        let r = await chai 
+        .request(url)
+        .put('/actualizar_usuario')
+        .send({nombre:"Alejandro", apellido:"gavasdf", rol:4, usuario:"Ale", pass:"1234567", id:ultimo.body[0].id});
+        expect(r.body.status).to.be.a('string');
+    });
+
     afterEach(async () => {
         let res = await chai
         .request(url)
@@ -22,5 +39,6 @@ describe('Prueba para el CRUD de Usuario:', () => {
         .request(url)
         .post('/eliminar_usuario')
         .send({id:res.body[0].id})
-    })
+    });
+
 });
