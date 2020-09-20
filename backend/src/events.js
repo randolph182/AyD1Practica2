@@ -89,7 +89,9 @@ router.post('/nuevo_producto', (req, res, next) => {
 });
 
    /*
-  ******************** CRUD USUARIO ********************
+   ******************************************************
+   ******************** CRUD USUARIO ********************
+   ******************************************************
   */
   //REGISTRO DE USUARIO
   router.post('/registrar_usuario', (req, res, next) => {
@@ -167,9 +169,104 @@ router.post('/nuevo_producto', (req, res, next) => {
   });
 
   
+  //OBTENER ULTIMO ID
+  router.get('/ultimo_usuario', (req, res, next) => {
+    db.query(
+      'SELECT MAX(id_usuario) AS id FROM USUARIO',
+      (error, results) => {
+        if(error)
+        {
+          console.error(error);
+          res.status(500).json({status:'error'});
+        }
+        else
+        {
+          res.status(200).json(results);
+        }
+      }
+    );
+  });
   
-  
-  
+  /*
+   ********************************************************
+   ******************** CRUD CATEGORIA ********************
+   ********************************************************
+  */
+  //REGISTRO DE CATEGORIA
+  router.post('/registrar_categoria', (req, res, next) => {
+    db.query(
+      'INSERT INTO CATEGORIA(nombre, descripcion) VALUES(?,?)',
+      [req.body.nombre, req.body.descripcion],
+        (error) => {
+          if(error)
+          {
+            console.error(error);
+            res.status(500).json({status:'error'});
+          }
+          else
+          {
+            res.status(200).json({status:'ok'});
+          }
+        }
+    );
+  });
+
+  //MOSTRAR CATEGORIA
+  router.get('/obtener_categoria', (req, res, next) => {
+    db.query(
+      'SELECT * FROM CATEGORIA',
+      (error, results) => {
+        if(error)
+        {
+          console.error(error);
+          res.status(500).json({status:'error'});
+        }
+        else
+        {
+          res.status(200).json(results);
+        }
+      }
+    );
+  });
+
+  //ACTUALIZAR CATEGORIA
+  router.put('/actualizar_categoria', (req, res, next) => {
+    db.query(
+      'UPDATE CATEGORIA SET nombre = ?, descripcion = ? WHERE id_categoria = ?',
+      [req.body.nombre, req.body.descripcion, req.body.id],
+        (error) => {
+          if(error)
+          {
+            console.error(error);
+            res.status(500).json({status:'error'});
+          }
+          else
+          {
+            res.status(200).json({status:'ok'});
+          }
+        }
+    );
+  });
+
+  //ELIMINAR CATEGORIA
+  router.post('/eliminar_categoria', (req, res, next) => {
+    db.query(
+      'DELETE FROM CATEGORIA WHERE id_categoria = ?',
+      [req.body.id],
+        (error) => {
+          if(error)
+          {
+            console.error(error);
+            res.status(500).json({status:'error'});
+          }
+          else
+          {
+            res.status(200).json({status:'ok'});
+          }
+        }
+    );
+  });
+
   return router;
 }
 
