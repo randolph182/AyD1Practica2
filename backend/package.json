@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/.bin/mocha --reporter spec"
+    "test": "mocha",
+    "coverage": "nyc -x \"**/tests/**\" --reporter=cobertura --reporter=text mocha ./test"
   },
   "keywords": [],
   "author": "",
@@ -13,12 +14,14 @@
     "chai": "^4.2.0",
     "chai-http": "^4.3.0",
     "cors": "^2.8.5",
+    "coverage-node": "^3.0.0",
     "express": "^4.17.1",
     "mocha": "^8.1.3",
     "mysql": "^2.18.1",
     "nock": "^13.0.4"
   },
   "devDependencies": {
-    "nodemon": "^2.0.4"
+    "nodemon": "^2.0.4",
+    "nyc": "^15.1.0"
   }
 }
