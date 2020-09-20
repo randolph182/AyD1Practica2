@@ -17,6 +17,7 @@ describe('Prueba para obtener informacion de la API: ', () => {
    });
 });
 
+//insercion de productos 
 describe('Prueba para insertar un nuevo producto a la API: ', () => {
    it('Prueba para Insertar un nuevo producto', (done) => {
       let res = chai
@@ -45,6 +46,23 @@ describe('Prueba para insertar un nuevo producto a la API: ', () => {
    });
 });
 
+
+//modificacion de productos 
+describe.only('Prueba para modificar un producto a la API: ', () => {
+   it('Prueba para modificar un nuevo producto', async() => {
+      //obteniendo ultimo id ingresado a la base de datos
+      let res_id = await chai
+            .request(url)
+            .get('/ultimo_producto');
+
+      let res_upd= await chai
+         .request(url)
+         .put('/actualizar_producto')
+         .send({ nombre: "consome maller", precio: 23, descripcion: "El del pollitox2 :v",id_producto:res_id.body.id});
+            expect(res_upd.status).to.equal(200);
+
+   });
+});
 
 
 
