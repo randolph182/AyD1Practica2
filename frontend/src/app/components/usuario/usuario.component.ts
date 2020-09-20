@@ -39,6 +39,7 @@ export class UsuarioComponent implements OnInit {
 
 
   eliminar(user:Usuario):void{
+    this.usuarios = this.usuarios.filter(h => h !== user);
     this.usuarioService.darDeBaja(user).subscribe( usuario => { alert('Usuario eliminado Dx');});
 
   }

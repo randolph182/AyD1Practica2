@@ -6,5 +6,6 @@ export class Usuario {
     rol:number;
     usuario:string;
     pass:string;
+    password:string;
 
 }
