@@ -6,6 +6,7 @@ const producto = require("../src/events") //mando a trare funcionalidades que me
 const url = 'http://localhost:3000';
 let http = require('http');
 const { parse } = require('path');
+const { CLIENT_RENEG_WINDOW } = require('tls');
 
 //Informacion de productos
 describe('Prueba para obtener informacion de la API: ', () => {
@@ -48,7 +49,7 @@ describe('Prueba para insertar un nuevo producto a la API: ', () => {
 
 
 //modificacion de productos 
-describe.only('Prueba para modificar un producto a la API: ', () => {
+describe('Prueba para modificar un producto a la API: ', () => {
    it('Prueba para modificar un nuevo producto', async() => {
       //obteniendo ultimo id ingresado a la base de datos
       let res_id = await chai
@@ -61,6 +62,29 @@ describe.only('Prueba para modificar un producto a la API: ', () => {
          .send({ nombre: "consome maller", precio: 23, descripcion: "El del pollitox2 :v",id_producto:res_id.body.id});
             expect(res_upd.status).to.equal(200);
 
+   });
+});
+
+
+//eliminacion de productos 
+describe('Prueba para eliminar un producto de la API: ', () => {
+    it('Simulacion de agregado y eliminacion de un nuevo producto', async() => {
+      let res = await chai
+         .request(url)
+         .post('/nuevo_producto')
+         .send({ nombre: "refresco", precio: 2, descripcion: "de la palma" });
+         expect(res.status).to.equal(200);
+   });
+   afterEach(async () => {
+      let res_id = await chai
+         .request(url)
+         .get('/ultimo_producto');
+
+      let res_del = await chai
+         .request(url)
+         .put('/eliminar_producto')
+         .send({ id_producto: res_id.body.id});
+         expect(res_del.status).to.equal(200);
    });
 });
 
