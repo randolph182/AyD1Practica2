@@ -1,0 +1,54 @@
+<div class="container">
+    <div class="reglist">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th>Descripcion</th>
+            <th></th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let producto of productos; let i = index">
+            <th scope="row">{{ i + 1 }}</th>
+            <td>{{ producto.nombre }}</td>
+            <td>{{ producto.precio }}</td>
+            <td>{{ producto.descripcion }}</td>
+            <td>
+              <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+            </td>
+            <td>
+              <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+    <br>
+    <div class="regentry">
+      <form (ngSubmit)="onSave()">
+        <div class="form-group row">
+          <label for="nombre-input" class="col-2 col-form-label">Nombre</label>
+          <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="producto.nombre" name="firstName">
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="categoria-input" class="col-2 col-form-label">Precio</label>
+          <div class="col-10">
+            <input class="form-control" type="text" [(ngModel)]="producto.descripcion" name="lastName">
+          </div>
+        </div>
+        <div class="form-group row">
+            <label for="categoria-input" class="col-2 col-form-label">descripcion</label>
+            <div class="col-10">
+                <input class="form-control" type="text" [(ngModel)]="´producto.descripcion" name="lastName">
+            </div>
+        </div>
+        <button type="submit" class="btn btn-success">Save</button>
+      </form>
+    </div>
+  </div>
