@@ -41,4 +41,11 @@ describe('Prueba para el CRUD de Usuario:', () => {
         .send({id:res.body[0].id})
     });
 
+    
+    it('Obtener usuarios', async () => {
+        let res = await chai
+        .request(url)
+        .get('/obtener_usuario');
+        expect(res.body).to.be.an('array');
+    });
 });
