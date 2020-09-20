@@ -21,8 +21,8 @@ export class UsuarioService {
    /** GET Usuarios from the server */
    getUsuarios (): Observable<Usuario[]> {
     let urlUsuarios = `http://localhost:3000/obtener_usuario`;
-    return this.http.get<Usuario[]>(urlUsuarios, httpOptions)
-    .pipe(
+    return this.http.get<Usuario[]>(urlUsuarios).
+    pipe(
       tap(_ => console.log('fetched catedraticos')),
       catchError(this.handleError<Usuario[]>('getcatedraticos', []))
     );
@@ -35,7 +35,7 @@ export class UsuarioService {
   /*** DML */
   addUsuario(usuario : Usuario) : Observable<Usuario>{
     let url = 'http://localhost:3000/registrar_usuario';
-    return this.http.post<Usuario>(url, usuario, httpOptions)
+    return this.http.post<Usuario>(url, usuario)
     .pipe(
       tap((newcatedratico : Usuario) => console.log(`added new user w/ id=${newcatedratico}`)),
       catchError(this.handleError<Usuario>('Usuario'))
@@ -58,7 +58,7 @@ export class UsuarioService {
   /** PUT: update the hero on the server */
   updateUsuario(usuario:Usuario): Observable<any> {
     let url = 'http://localhost:3000/actualizar_usuario';
-    return this.http.put(url, usuario, httpOptions).pipe(
+    return this.http.put(url, usuario).pipe(
       tap(_ => console.log(`updated hero id=${usuario.id}`)),
       catchError(this.handleError<any>('updateHero'))
     );
