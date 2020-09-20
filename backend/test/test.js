@@ -40,7 +40,6 @@ describe('Prueba para el CRUD de Usuario:', () => {
         .post('/eliminar_usuario')
         .send({id:res.body[0].id})
     });
-
     
     it('Obtener usuarios', async () => {
         let res = await chai
@@ -48,4 +47,22 @@ describe('Prueba para el CRUD de Usuario:', () => {
         .get('/obtener_usuario');
         expect(res.body).to.be.an('array');
     });
+
+    it('Eliminar un usuario', async () => {
+        let res = await chai
+        .request(url)
+        .post('/registrar_usuario')
+        .send({nombre:"oscar", apellido:"rodriguez", rol:1, usuario:"oscar", pass:"1234"});
+        
+        let ultimo = await chai
+        .request(url)
+        .get('/ultimo_usuario');
+        
+        let borrar = await chai
+        .request(url)
+        .post('/eliminar_usuario')
+        .send({id:ultimo.body[0].id})
+        expect(borrar.body.status).to.be.true;
+    });
+
 });

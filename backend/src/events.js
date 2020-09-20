@@ -162,7 +162,7 @@ router.post('/nuevo_producto', (req, res, next) => {
           }
           else
           {
-            res.status(200).json({status:'ok'});
+            res.status(200).json({status: true});
           }
         }
     );
