@@ -22,7 +22,7 @@ export class CategoriaService {
   constructor(private http: HttpClient) { }
   
   addCategoria(categoria: Categoria) : Observable<Categoria>{
-    let url = 'http://3.85.52.106:3000/registrar_usuario';
+    let url = 'http://localhost:3000/registrar_categoria';
     return this.http.post<Categoria>(url, categoria, httpOptions)
     .pipe(
       tap((newcategoria : Categoria) => console.log(`added new category w/ id=${newcategoria}`)),
@@ -31,15 +31,15 @@ export class CategoriaService {
   }
 
   deleteCategoria(categoria:Categoria): Observable<Categoria> {
-    const url = `http://3.227.118.254:3000/eliminar_usuario`;
+    const url = `http://localhost:3000/eliminar_categoria`;
     return this.http.post<Categoria>(url, categoria,httpOptions).pipe(
       tap(_ => console.log(`deleted usuario id=${categoria.id}`)),
       catchError(this.handleError<Categoria>(`darDeBaja id=${categoria.id}`))
     );
   }
 
-  getUsuarios (): Observable<Categoria[]> {
-    let urlUsuarios = `http://localhost:3000/obtener_usuario`;
+  getCategorias (): Observable<Categoria[]> {
+    let urlUsuarios = `http://localhost:3000/obtener_categoria`;
     return this.http.get<Categoria[]>(urlUsuarios, httpOptions)
     .pipe(
       tap(_ => console.log('fetched categoria')),
@@ -48,7 +48,7 @@ export class CategoriaService {
   }
 
   updateCategoria(categoria:Categoria): Observable<any> {
-    let url = 'http://localhost:3000/actualizar_usuario';
+    let url = 'http://localhost:3000/actualizar_categoria';
     return this.http.put(url, categoria, httpOptions).pipe(
       tap(_ => console.log(`categoria actualizada id=${categoria.id}`)),
       catchError(this.handleError<any>('updatecategoria'))
@@ -67,5 +67,6 @@ export class CategoriaService {
       return of(result as T);
     };
   }
+  
 
 }

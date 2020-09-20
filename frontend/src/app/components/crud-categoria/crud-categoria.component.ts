@@ -15,13 +15,13 @@ export class CrudCategoriaComponent implements OnInit {
   //categoriaForm:FormGroup;
 
   categoria:Categoria;
+ 
+
   constructor(private router:Router,
-    private categoriaService:CategoriaService) { }
+    private categoriaService:CategoriaService) {
+    }
 
   addCategoria():void{
-
-    //let categoria:Categoria = new Categoria();
-    //this.categoria.nombre = this.categoriaForm.controls['categoria-input'].value;
 
     this.categoriaService.addCategoria(this.categoria).
     subscribe(
@@ -33,16 +33,33 @@ export class CrudCategoriaComponent implements OnInit {
 
   }
 
+  getCategoria():void{
+    this.categoriaService.getCategorias().
+    subscribe(categoria =>{
+      this.categorias = categoria as Categoria[];
+      console.log("--------categoria local------------\n");
+      console.log(categoria);
+      console.log("--------categoria global------------\n");
+      console.log(this.categoria);
+    }, 
+    error => console.error(error));
+  }
+
+  eliminarCategoria(categoria:Categoria):void{
+    this.categoriaService.deleteCategoria(categoria).subscribe( usuario => { alert('categoria eliminada!');});
+  }
+
   ngOnInit(): void {
+      this.getCategoria();
+  }
 
-  }
-  onDelete(indice){
-    
-  }
-  onSave(){
+  onSave()
+  {}
 
-  }
-  onEdit(indice){
+  onEdit(indice)
+  {}
 
-  }
+  onDelete(indice)
+  {}
+  
 }
