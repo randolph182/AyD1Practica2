@@ -14,6 +14,7 @@ export class CrudProductoComponent implements OnInit {
   productos:any = [];
   producto:Producto;
   ngOnInit(): void {
+    this.producto = new Producto();
     this.productoService.getProductos()
     .subscribe(
       res=>{
