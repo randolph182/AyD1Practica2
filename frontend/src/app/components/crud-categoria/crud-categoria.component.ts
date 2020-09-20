@@ -10,8 +10,10 @@ import { Router } from '@angular/router';
   styleUrls: ['./crud-categoria.component.css']
 })
 export class CrudCategoriaComponent implements OnInit {
-  categorias:any=[];
+  categorias:Categoria[]=[];
   index:number;
+  nombrecat:string;
+  descat:string;
   //categoriaForm:FormGroup;
 
   categoria:Categoria;
@@ -54,6 +56,7 @@ export class CrudCategoriaComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.categoria = new Categoria();
       this.getCategoria();
   }
 
@@ -65,8 +68,11 @@ export class CrudCategoriaComponent implements OnInit {
     let cat:Categoria = new Categoria();
     cat.id = indice;
     cat.nombre = this.categoria.nombre;
+    //console.log("nombre: " + cat.nombre);
     cat.descripcion = this.categoria.descripcion;
+    //console.log("nombre: " + cat.descripcion);
     this.actualizarCategoria(cat);
+    
   }
 
   onDelete(indice)
