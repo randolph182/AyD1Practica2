@@ -1,5 +1,6 @@
 let chai = require('chai');
 let chaiHttp = require('chai-http');
+const { afterEach } = require('mocha');
 const expect = require('chai').expect;
 chai.use(chaiHttp);
 const url = 'http://localhost:3000';
@@ -70,8 +71,37 @@ describe('Prueba para Obtención y Eliminación de usuario: ', () => {
     });
 });
 
+describe('Prueba para Creación de Categoria: ', () => {
+    it('Registrar una categoria', async () => {
+        let res = await chai
+        .request(url)
+        .post('/registrar_categoria')
+        .send({id:"oscar", descripcion:"bueno"});
+        expect(res.status).to.not.equal(200);
+
+        let r = await chai
+        .request(url)
+        .get('/ultima_categoria');
+        
+        let borrar = await chai
+        .request(url)
+        .post('/eliminar_categoria')
+        .send({id:r.body[0].id})
+    });
+});
+
+describe('Prueba para Eliminación de Categoria: ', () => {
+    it('Eliminar una categoria', async () => {
+        let borrar = await chai
+        .request(url)
+        .post('/eliminar_categoria')
+        .send({fsds:"fdsaf"})
+        expect(borrar.body.status).to.be.false;
+    });
+});
+
 describe('Prueba utilizando Mock: ', () => {
-    beforeEach(() => {
+    before(() => {
         nock(url)
         .post('/registrar_usuario')
         .reply(200, response);

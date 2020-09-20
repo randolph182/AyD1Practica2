@@ -194,21 +194,30 @@ router.post('/nuevo_producto', (req, res, next) => {
   */
   //REGISTRO DE CATEGORIA
   router.post('/registrar_categoria', (req, res, next) => {
-    db.query(
-      'INSERT INTO CATEGORIA(nombre, descripcion) VALUES(?,?)',
-      [req.body.nombre, req.body.descripcion],
-        (error) => {
-          if(error)
-          {
-            console.error(error);
-            res.status(500).json({status:'error'});
+
+    if(req.body.nombre != null && req.body.descripcion != null)
+    {
+      db.query(
+        'INSERT INTO CATEGORIA(nombre, descripcion) VALUES(?,?)',
+        [req.body.nombre, req.body.descripcion],
+          (error) => {
+            if(error)
+            {
+              console.error(error);
+              res.status(500).json({status:'error'});
+            }
+            else
+            {
+              res.status(200).json({status:'ok'});
+            }
           }
-          else
-          {
-            res.status(200).json({status:'ok'});
-          }
-        }
-    );
+      );
+    }
+    else
+    {
+      res.status(500).json({status:'error'});
+    }
+    
   });
 
   //MOSTRAR CATEGORIA
@@ -250,20 +259,46 @@ router.post('/nuevo_producto', (req, res, next) => {
 
   //ELIMINAR CATEGORIA
   router.post('/eliminar_categoria', (req, res, next) => {
+    if(req.body.id != null)
+    {
+      db.query(
+        'DELETE FROM CATEGORIA WHERE id_categoria = ?',
+        [req.body.id],
+          (error) => {
+            if(error)
+            {
+              console.error(error);
+              res.status(500).json({status:false});
+            }
+            else
+            {
+              res.status(200).json({status:true});
+            }
+          }
+      );
+    }
+    else
+    {
+      res.status(500).json({status:false});
+    }
+    
+  });
+
+  //OBTENER ULTIMO ID DE CATEGORIA
+  router.get('/ultima_categoria', (req, res, next) => {
     db.query(
-      'DELETE FROM CATEGORIA WHERE id_categoria = ?',
-      [req.body.id],
-        (error) => {
-          if(error)
-          {
-            console.error(error);
-            res.status(500).json({status:'error'});
-          }
-          else
-          {
-            res.status(200).json({status:'ok'});
-          }
+      'SELECT MAX(id_categoria) AS id FROM CATEGORIA',
+      (error, results) => {
+        if(error)
+        {
+          console.error(error);
+          res.status(500).json({status:'error'});
         }
+        else
+        {
+          res.status(200).json(results);
+        }
+      }
     );
   });
 
