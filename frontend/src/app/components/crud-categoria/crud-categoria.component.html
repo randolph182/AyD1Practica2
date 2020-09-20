@@ -11,15 +11,15 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let categoria of categorias; let i = index">
+          <tr *ngFor="let categoria of categorias; let i =index ">
             <th scope="row">{{ i + 1 }}</th>
             <td>{{ categoria.nombre }}</td>
             <td>{{ categoria.descripcion }}</td>
             <td>
-              <button type="button" class="btn btn-info" (click)="onEdit(i)">Edit</button>
+              <button type="button" class="btn btn-info"(click)="onEdit(i)">Edit</button>
             </td>
             <td>
-              <button type="button" class="btn btn-danger" (click)="onDelete(i)">Delete</button>
+              <button type="button" class="btn btn-danger"(click)="onDelete(i)">Delete</button>
             </td>
           </tr>
         </tbody>
