@@ -61,9 +61,19 @@ export class CrudCategoriaComponent implements OnInit {
   {}
 
   onEdit(indice)
-  {}
+  {
+    let cat:Categoria = new Categoria();
+    cat.id = indice;
+    cat.nombre = this.categoria.nombre;
+    cat.descripcion = this.categoria.descripcion;
+    this.actualizarCategoria(cat);
+  }
 
   onDelete(indice)
-  {}
+  {
+    let cat:Categoria = new Categoria();
+    cat.id = indice;
+    this.eliminarCategoria(cat);
+  }
   
 }
