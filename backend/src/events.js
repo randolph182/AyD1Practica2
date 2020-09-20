@@ -267,14 +267,10 @@ router.post('/nuevo_producto', (req, res, next) => {
     );
   });
 
-  return router;
-}
-
-
-//metodo que obtiene el ultimo registro ingresado de los productos
+  //metodo que obtiene el ultimo registro ingresado de los productos
   router.get('/ultimo_producto', (req, res, next) => {
     db.query(
-      'SELECT MAX(id_producto) AS id FROM USUARIO',
+      'SELECT MAX(id_producto) AS id FROM PRODUCTO',
       (error, results) => {
         if(error)
         {
@@ -283,11 +279,17 @@ router.post('/nuevo_producto', (req, res, next) => {
         }
         else
         {
-          res.status(200).json(results);
+          res.send(results[0]);
         }
       }
     );
   });
+
+  return router;
+}
+
+
+
   
 
 
