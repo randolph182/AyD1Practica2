@@ -25,7 +25,4 @@ fdescribe('EncabezadoComponent', () => {
     fixture.detectChanges();
   });
 
-  it('should create', () => {
-    expect(component).toBeTruthy();
-  });
 });

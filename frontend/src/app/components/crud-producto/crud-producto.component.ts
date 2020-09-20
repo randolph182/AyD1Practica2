@@ -10,13 +10,15 @@ import {ProductoService} from '../../services/producto.service'
 })
 export class CrudProductoComponent implements OnInit {
   
-  constructor(private productoService:ProductoService) { }
+  constructor(private productoService:ProductoService) { 
+    this.index = 0;
+  }
   productos:any = [];
   producto:Producto;
   index:number;
   ngOnInit(): void {
     this.producto = new Producto();
-    this.index = 0;
+    
     this.productoService.getProductos()
     .subscribe(
       res=>{
@@ -41,6 +43,9 @@ export class CrudProductoComponent implements OnInit {
     )
   }
   onSave(){
+    if(this.producto.descripcion!=""&&this.producto.nombre!=""&&this.producto.precio>0){
+
+    }
     this.productoService.createProducto(this.producto)
     .subscribe(
       res=>{
