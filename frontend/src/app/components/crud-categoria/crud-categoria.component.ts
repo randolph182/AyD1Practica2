@@ -46,7 +46,11 @@ export class CrudCategoriaComponent implements OnInit {
   }
 
   eliminarCategoria(categoria:Categoria):void{
-    this.categoriaService.deleteCategoria(categoria).subscribe( usuario => { alert('categoria eliminada!');});
+    this.categoriaService.deleteCategoria(categoria).subscribe( categoria => { alert('categoria eliminada!');});
+  }
+
+  actualizarCategoria(categoria:Categoria):void{
+    this.categoriaService.updateCategoria(categoria).subscribe( categoria => { alert('categoria actualizada!');});
   }
 
   ngOnInit(): void {
