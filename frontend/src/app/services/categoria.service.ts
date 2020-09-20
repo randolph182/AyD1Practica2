@@ -18,7 +18,7 @@ const httpOptions = {
 
 
 export class CategoriaService {
-  API_URI = 'http://localhost:3000'
+ // API_URI = 'http://localhost:3000'
   constructor(private http: HttpClient) { }
   update(){
 
@@ -30,14 +30,26 @@ export class CategoriaService {
       tap((newcategoria : Categoria) => console.log(`added new category w/ id=${newcategoria}`)),
       catchError(this.handleError<Categoria>('Categoria'))
     );
-
   }
 
-  delete(){
-
+  darDeBaja(categoria:Categoria): Observable<Categoria> {
+    const url = `http://3.227.118.254:3000/eliminar_usuario`;
+    return this.http.post<Categoria>(url, categoria,httpOptions).pipe(
+      tap(_ => console.log(`deleted usuario id=${categoria.id}`)),
+      catchError(this.handleError<Categoria>(`darDeBaja id=${categoria.id}`))
+    );
   }
+
   read(){
 
+  }
+
+  updateUsuario(categoria:Categoria): Observable<any> {
+    let url = 'http://localhost:3000/actualizar_usuario';
+    return this.http.put(url, categoria, httpOptions).pipe(
+      tap(_ => console.log(`categoria actualizada id=${categoria.id}`)),
+      catchError(this.handleError<any>('updatecategoria'))
+    );
   }
 
   private handleError<T> (operation = 'operation', result?: T) {
