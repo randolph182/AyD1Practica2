@@ -7,6 +7,7 @@ const producto = require("../src/events") //mando a trare funcionalidades que me
 const url = 'http://localhost:3000';
 const nock = require('nock');
 const response = require('./usuarios');
+const products = require('./productos');
 let http = require('http');
 const { parse } = require('path');
 const { CLIENT_RENEG_WINDOW } = require('tls');
@@ -200,7 +201,77 @@ describe('Prueba para eliminar un producto de la API: ', () => {
    });
 });
 
+//consulta de categoria de productos
+describe('Prueba para consultar productos en la API',()=>{
+   it('la prueba debe fallar exitosamente', (done) => {
+      let res = chai
+         .request(url)
+         .post('/obtener_categoria')
+         .end(function (err, res) {
+            console.log(res.status)
+            expect(res).to.have.status(404);
+            done();
+         });
+   });
+});
+
+describe('Prueba Actualizar categorias en la  API',()=>{
+   it('prueba para insertar una nueva categoria', (done) => {
+      let res = chai
+         .request(url)
+         .post('/registrar_categoria')
+         .send({ nombre: "consomes", descripcion: "categoriaN"})
+         .end(function (err, res) {
+            console.log(res.status)
+            expect(res).to.have.status(200);
+            done();
+         });
+   });
 
 
+   it('prueba modificar la ultima categoria agregada', async() => {
+      let res_id = await chai
+         .request(url)
+         .get('/ultima_categoria');
+         console.log(`ultimo id agregado: ${res_id.body.id}`);
+         
+         let res_act = await chai
+         .request(url)
+         .put('/actualizar_categoria')
+         .send({ nombre: "actualizado papu",descripcion:"Hoy si te actualizaste jajaj saludos",id:res_id.body.id});
+         console.log(res_act.status);
+         expect(res_act.status).to.equal(200);
+      
+   });
 
+   it('quitando insert de prueba', async() => {
+      afterEach(async () => {
+         let res_id = await chai
+            .request(url)
+            .get('/ultima_categoria');
+   
+         let res_del = await chai
+            .request(url)
+            .post('/eliminar_categoria')
+            .send({ id: res_id.body.id});
+            expect(res_del.status).to.equal(200);
+            console.log(`elimindo : ${res_id.body.id}`);
+      });
+      
+   });
+
+});
+
+describe('Mockeado productos de la base de datos en la API',()=>{
+   it('Debe poder generar datos de productos', (done) => {
+      let res = chai
+         .request(url)
+         .get('/mock_producto')
+         .end(function (err, res) {
+            console.log(res.body)
+            expect(res).to.have.status(200);
+            done();
+         });
+   });
+});
 
