@@ -170,6 +170,20 @@ describe('Prueba para eliminar un producto de la API: ', () => {
    });
 });
 
+//consulta de categoria de productos
+describe('Prueba para consultar productos en la API',()=>{
+   it('la prueba debe fallar exitosamente', (done) => {
+      let res = chai
+         .request(url)
+         .post('/obtener_categoria')
+         .end(function (err, res) {
+            console.log(res.status)
+            expect(res).to.have.status(404);
+            done();
+         });
+   });
+});
+
 
 
 
