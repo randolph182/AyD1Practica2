@@ -18,11 +18,14 @@ export class ProductoService {
     return this.http.put(`${this.API_URI}/actualizar_producto`,producto);
   }
   deleteProducto(id){
-    if(id instanceof Number){
+    try {
+      Number(id);
       const valor = {id_producto:id}
       return this.http.put(`${this.API_URI}/eliminar_producto`,valor);
+    
+    } catch (error) {
+      return undefined;
     }
-    return undefined;
   }
   createProducto(producto){
     return this.http.post(`${this.API_URI}/nuevo_producto`,producto);

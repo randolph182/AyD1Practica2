@@ -13,21 +13,27 @@ export class CrudProductoComponent implements OnInit {
   constructor(private productoService:ProductoService) { }
   productos:any = [];
   producto:Producto;
+  index:number;
   ngOnInit(): void {
-    this.producto = new Producto(-1,"nombre",-1,"desc");
+    this.producto = new Producto();
+    this.index = 0;
     this.productoService.getProductos()
     .subscribe(
       res=>{
         this.productos = res;
+        console.log(this.productos)
       },err=>{
         console.error(err);
       }
     )
   }
   onDelete(indice){
-    let producto = this.productos[indice];
-    this.productoService.deleteProducto(producto.id).subscribe(
+    console.log(indice);
+    let prod = this.productos[indice];
+    console.log(prod);
+    this.productoService.deleteProducto(prod.id).subscribe(
       res=>{
+        console.log('se supone que eliminó')
         console.log(res);
       },err=>{
         console.error(err);
