@@ -267,6 +267,25 @@ router.post('/nuevo_producto', (req, res, next) => {
     );
   });
 
+
+  //metodo que obtiene el ultimo registro ingresado de los productos
+  router.get('/ultima_categoria', (req, res, next) => {
+    db.query(
+      'SELECT MAX(id_categoria) AS id FROM CATEGORIA',
+      (error, results) => {
+        if(error)
+        {
+          console.error(error);
+          res.status(500).json({status:'error'});
+        }
+        else
+        {
+          res.send(results[0]);
+        }
+      }
+    );
+  });
+
   //metodo que obtiene el ultimo registro ingresado de los productos
   router.get('/ultimo_producto', (req, res, next) => {
     db.query(

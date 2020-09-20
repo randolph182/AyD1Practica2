@@ -184,7 +184,53 @@ describe('Prueba para consultar productos en la API',()=>{
    });
 });
 
+describe.only('Prueba Actualizar categorias en la  API',()=>{
+   it('prueba para insertar una nueva categoria', (done) => {
+      let res = chai
+         .request(url)
+         .post('/registrar_categoria')
+         .send({ nombre: "consomes", descripcion: "categoriaN"})
+         .end(function (err, res) {
+            console.log(res.status)
+            expect(res).to.have.status(200);
+            done();
+         });
+   });
 
+
+   it('prueba modificar la ultima categoria agregada', async() => {
+      let res_id = await chai
+         .request(url)
+         .get('/ultima_categoria');
+         console.log(`ultimo id agregado: ${res_id.body.id}`);
+         
+         let res_act = await chai
+         .request(url)
+         .put('/actualizar_categoria')
+         .send({ nombre: "actualizado papu",descripcion:"Hoy si te actualizaste jajaj saludos",id:res_id.body.id});
+         console.log(res_act.status);
+         expect(res_act.status).to.equal(200);
+      
+   });
+
+   it('quitando insert de prueba', async() => {
+      afterEach(async () => {
+         let res_id = await chai
+            .request(url)
+            .get('/ultima_categoria');
+   
+         let res_del = await chai
+            .request(url)
+            .post('/eliminar_categoria')
+            .send({ id: res_id.body.id});
+            expect(res_del.status).to.equal(200);
+            console.log(`elimindo : ${res_id.body.id}`);
+      });
+      
+   });
+
+   
+});
 
 
 
