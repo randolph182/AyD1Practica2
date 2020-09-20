@@ -5,7 +5,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule} from '@angular/common/http';
 import { fas } from '@fortawesome/free-solid-svg-icons';
-import { far } from '@fortawesome/free-regular-svg-icons';
+//import { far } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
 import { library } from '@fortawesome/fontawesome-svg-core';
 
@@ -16,12 +16,12 @@ import { EncabezadoComponent } from './components/encabezado/encabezado.componen
 import { HomeComponent } from './components/home/home.component';
 import { CrudCategoriaComponent } from './components/crud-categoria/crud-categoria.component';
 import { CommonModule } from '@angular/common';
-import { CrudProductoComponent } from './crud-producto/crud-producto.component';
+import { CrudProductoComponent } from './components/crud-producto/crud-producto.component';
 
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { ModUsuarioComponent } from './components/mod-usuario/mod-usuario.component';
-library.add(fas,far);
+library.add(fas);
 @NgModule({
   declarations: [
     AppComponent,
@@ -31,6 +31,7 @@ library.add(fas,far);
     HomeComponent,
     UsuarioComponent,
     RegistroUsuarioComponent,
+    CrudProductoComponent,
     ModUsuarioComponent
   ],
   imports: [

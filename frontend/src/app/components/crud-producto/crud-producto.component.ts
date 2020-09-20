@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Producto} from '../models/Producto';
+import {Producto} from '../../models/Producto';
 
-import {ProductoService} from '../services/producto.service'
+import {ProductoService} from '../../services/producto.service'
 
 @Component({
   selector: 'app-crud-producto',
