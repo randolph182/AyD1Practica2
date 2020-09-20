@@ -12,7 +12,7 @@ export class CrudCategoriaComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
+    this.index = 0;
   }
   onDelete(indice){
     
@@ -21,6 +21,6 @@ export class CrudCategoriaComponent implements OnInit {
 
   }
   onEdit(indice){
-
+    
   }
 }

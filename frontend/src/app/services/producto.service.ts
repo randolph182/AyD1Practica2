@@ -17,9 +17,12 @@ export class ProductoService {
   updateProducto(producto){
     return this.http.put(`${this.API_URI}/actualizar_producto`,producto);
   }
-  deleteProdcuto(id){
-    const valor = {id_producto:id}
-    return this.http.put(`${this.API_URI}/eliminar_producto`,valor);
+  deleteProducto(id){
+    if(id instanceof Number){
+      const valor = {id_producto:id}
+      return this.http.put(`${this.API_URI}/eliminar_producto`,valor);
+    }
+    return undefined;
   }
   createProducto(producto){
     return this.http.post(`${this.API_URI}/nuevo_producto`,producto);

@@ -9,7 +9,7 @@ import {ProductoService} from '../services/producto.service'
   styleUrls: ['./crud-producto.component.css']
 })
 export class CrudProductoComponent implements OnInit {
-
+  
   constructor(private productoService:ProductoService) { }
   productos:any = [];
   producto:Producto;
@@ -26,7 +26,7 @@ export class CrudProductoComponent implements OnInit {
   }
   onDelete(indice){
     let producto = this.productos[indice];
-    this.productoService.deleteProdcuto(producto.id).subscribe(
+    this.productoService.deleteProducto(producto.id).subscribe(
       res=>{
         console.log(res);
       },err=>{
