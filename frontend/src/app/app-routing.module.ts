@@ -6,7 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ModUsuarioComponent } from './components/mod-usuario/mod-usuario.component';
-import { CrudProductoComponent } from './crud-producto/crud-producto.component';
+import { CrudProductoComponent } from './components/crud-producto/crud-producto.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home' , pathMatch: 'full'},

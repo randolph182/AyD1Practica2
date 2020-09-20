@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {Producto} from '../models/Producto';
+import {Producto} from '../../models/Producto';
 
-import {ProductoService} from '../services/producto.service'
+import {ProductoService} from '../../services/producto.service'
 
 @Component({
   selector: 'app-crud-producto',
@@ -14,7 +14,6 @@ export class CrudProductoComponent implements OnInit {
   productos:any = [];
   producto:Producto;
   ngOnInit(): void {
-    this.producto = new Producto(-1,"nombre",-1,"desc");
     this.productoService.getProductos()
     .subscribe(
       res=>{
