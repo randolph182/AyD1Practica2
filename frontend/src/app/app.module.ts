@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 
 import { HttpClientModule} from '@angular/common/http';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { fas } from '@fortawesome/free-solid-svg-icons';
 import { far } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
@@ -27,7 +26,7 @@ library.add(fas,far);
     AppComponent,
     EncabezadoComponent,
     HomeComponent,
-    CrudCategoriaComponent
+    CrudCategoriaComponent,
     HomeComponent,
     UsuarioComponent,
     RegistroUsuarioComponent,
@@ -38,7 +37,7 @@ library.add(fas,far);
     AppRoutingModule,
     CommonModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
     FormsModule,

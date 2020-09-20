@@ -31,7 +31,7 @@ export class ModUsuarioComponent implements OnInit {
     this.usuario.nombre = this.route.snapshot.paramMap.get('nombre');
     this.usuario.apellido = this.route.snapshot.paramMap.get('apellido');
     this.usuario.usuario = this.route.snapshot.paramMap.get('usuario');
-    this.usuario.password = this.route.snapshot.paramMap.get('password');
+    this.usuario.pass = this.route.snapshot.paramMap.get('password');
     this.usuario.rol   = +this.route.snapshot.paramMap.get('rol');
 
     console.log(this.usuario);

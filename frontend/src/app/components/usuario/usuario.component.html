@@ -45,7 +45,7 @@
                   <th scope="row">{{indice + 1}}</th>
                   <td>{{user.nombre}}</td>
                   <td>{{user.apellido}}</td>
-                  <td>  <a routerLink="/mod-usuario/{{user.id}}/{{user.nombre}}/{{user.apellido}}/{{user.usuario}}/{{user.password}}/{{user.rol}}"><fa-icon [icon] = "faEdit">
+                  <td>  <a routerLink="/mod-usuario/{{user.id_usuario}}/{{user.nombre}}/{{user.apellido}}/{{user.usuario}}/{{user.pass}}/{{user.rol}}"><fa-icon [icon] = "faEdit">
                         </fa-icon></a > 
                         <button (click) = "eliminar(user)"><fa-icon [icon] = "faTrashAlt">
                         </fa-icon></button > 

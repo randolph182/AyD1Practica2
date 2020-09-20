@@ -21,7 +21,6 @@ export class RegistroUsuarioComponent implements OnInit {
       {
         nombre: ['',Validators.required],
         apellido: ['',Validators.required],
-        id: ['', Validators.required],
         usuario: ['', Validators.required],
         password:['', Validators.required],
         rol: ['',Validators.required]
@@ -53,8 +52,7 @@ export class RegistroUsuarioComponent implements OnInit {
     usuario.apellido = this.usuarioForm.controls['apellido'].value;
     usuario.nombre = this.usuarioForm.controls['nombre'].value;
     usuario.usuario = this.usuarioForm.controls['usuario'].value;
-    usuario.password = this.usuarioForm.controls['password'].value;
-    usuario.id = this.usuarioForm.controls['id'].value;
+    usuario.pass = this.usuarioForm.controls['password'].value;
     usuario.rol = this.usuarioForm.controls['rol'].value;
     console.log(usuario);
     

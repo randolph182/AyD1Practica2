@@ -11,7 +11,7 @@ const routes: Routes = [
   {path: '', redirectTo: '/home' , pathMatch: 'full'},
   {path: 'encabezado', component:EncabezadoComponent},
   {path: 'home', component:HomeComponent},
-  {path: 'categoria', component:CrudCategoriaComponent}
+  {path: 'categoria', component:CrudCategoriaComponent},
   {path: 'registro-usuario', component:RegistroUsuarioComponent},
   {path: 'usuario', component:UsuarioComponent},
   {path: 'mod-usuario/:id/:nombre/:apellido/:usuario/:password/:rol', component:ModUsuarioComponent}

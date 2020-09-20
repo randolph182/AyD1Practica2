@@ -8,17 +8,17 @@
                         <legend class="text-center header">Detalles de {{usuario.nombre}}</legend>
 
                         <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <span class="col-md-1 col-md-offset-2 text-center">Nombre</span>
                             <div class="col-md-8">
-                                <input id="fname" name="name" type="text" placeholder="Nombres" 
+                                <input id="nombre" name="nombre" type="text"  
                                 class="form-control"  [(ngModel)]="usuario.nombre">
                                 
                             </div>
                         </div>
                         <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <span class="col-md-1 col-md-offset-2 text-center">Apellido</span>
                             <div class="col-md-8">
-                                <input id="lname" name="name" type="text" placeholder="Apellidos "
+                                <input id="apellido" name="apellido" type="text" 
                                  class="form-control" [(ngModel)]="usuario.apellido">
                                  
                             </div>
@@ -26,18 +26,18 @@
 
 
                         <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <span class="col-md-1 col-md-offset-2 text-center">Password</span>
                             <div class="col-md-8">
-                                <input id="password" name="password" type="password" placeholder=""
-                                 class="form-control"  [(ngModel)]="usuario.password">
+                                <input id="password" name="password" type="password" 
+                                 class="form-control"  [(ngModel)]="usuario.pass">
                                  
                             </div>
                         </div>
 
                         <div class="form-group">
-                            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
+                            <span class="col-md-1 col-md-offset-2 text-center">Usuario</span>
                             <div class="col-md-8">
-                                <input id="usuario" name="usuario" type="text" placeholder=""
+                                <input id="usuario" name="usuario" type="text" 
                                  class="form-control"  [(ngModel)]="usuario.usuario">
                                  
                             </div>
@@ -48,7 +48,7 @@
 
                         <div class="form-group">
                             <div class="col-md-12 pull-left">
-                                <button type="submit" class="btn btn-primary btn-lg" [disabled] = "usuarioForm.invalid" (click)="actualizarDatos()">
+                                <button type="submit" class="btn btn-primary btn-lg"  (click)="actualizarDatos()">
                                     Guardar
                                 </button>
                             </div>
