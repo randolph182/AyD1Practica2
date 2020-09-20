@@ -16,6 +16,7 @@ import { EncabezadoComponent } from './components/encabezado/encabezado.componen
 import { HomeComponent } from './components/home/home.component';
 import { CrudCategoriaComponent } from './components/crud-categoria/crud-categoria.component';
 import { CommonModule } from '@angular/common';
+import { CrudProductoComponent } from './crud-producto/crud-producto.component';
 
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';

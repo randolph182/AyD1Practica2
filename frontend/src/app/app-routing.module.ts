@@ -6,6 +6,7 @@ import { HomeComponent } from './components/home/home.component';
 import { RegistroUsuarioComponent } from './components/registro-usuario/registro-usuario.component';
 import { UsuarioComponent } from './components/usuario/usuario.component';
 import { ModUsuarioComponent } from './components/mod-usuario/mod-usuario.component';
+import { CrudProductoComponent } from './crud-producto/crud-producto.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/home' , pathMatch: 'full'},
@@ -14,7 +15,8 @@ const routes: Routes = [
   {path: 'categoria', component:CrudCategoriaComponent},
   {path: 'registro-usuario', component:RegistroUsuarioComponent},
   {path: 'usuario', component:UsuarioComponent},
-  {path: 'mod-usuario/:id/:nombre/:apellido/:usuario/:password/:rol', component:ModUsuarioComponent}
+  {path: 'mod-usuario/:id/:nombre/:apellido/:usuario/:password/:rol', component:ModUsuarioComponent},
+  {path: 'producto', component:CrudProductoComponent}
 ];
 
 @NgModule({
